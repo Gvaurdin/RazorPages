@@ -1,0 +1,30 @@
+﻿@page
+@model RazorPagesGeneral.Pages.Movies.EditMovieModel
+@{
+    ViewData["Title"] = "Изменение фильма";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div hidden="hidden">
+        <input asp-for="MovieViewModel.Id" type="number" />
+    </div>
+    <div>
+        <label>Название фильма</label>
+        <input asp-for="MovieViewModel.Title" type="text" style="width: 400px" />
+        <span asp-validation-for="MovieViewModel.Title" class="text-danger"></span>
+    </div>
+    <div>
+        <div class="form-group">
+            <label asp-for="MovieViewModel.URL" class="control-label"></label>
+            <input asp-for="MovieViewModel.URL" type="file" class="form-control" />
+            <span asp-validation-for="MovieViewModel.URL" class="text-danger"></span>
+        </div>
+    </div>
+    <div>
+        <label>Описание фильма</label>
+        <input asp-for="MovieViewModel.Description" type="text" />
+        <span asp-validation-for="MovieViewModel.Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" asp-route-id="@Model.MovieViewModel.Id" asp-page-handler="update" class="btn btn-primary">Обновить</button>
+</form>

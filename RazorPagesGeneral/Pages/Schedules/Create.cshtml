@@ -1,0 +1,52 @@
+﻿@page
+@model RazorPagesGeneral.Pages.Schedules.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Shedule</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Shedule.StartFilm" class="control-label"></label>
+                <input asp-for="Shedule.StartFilm" class="form-control" />
+                <span asp-validation-for="Shedule.StartFilm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shedule.EndFilm" class="control-label"></label>
+                <input asp-for="Shedule.EndFilm" class="form-control" />
+                <span asp-validation-for="Shedule.EndFilm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shedule.MovieId" class="control-label"></label>
+                <select asp-for="Shedule.MovieId" class ="form-control" asp-items="ViewBag.MovieId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shedule.HallCinemaId" class="control-label"></label>
+                <select asp-for="Shedule.HallCinemaId" class ="form-control" asp-items="ViewBag.HallCinemaId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Shedule.Cost" class="control-label"></label>
+                <input asp-for="Shedule.Cost" class="form-control" />
+                <span asp-validation-for="Shedule.Cost" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

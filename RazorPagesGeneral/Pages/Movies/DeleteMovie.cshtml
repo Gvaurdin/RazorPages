@@ -1,0 +1,13 @@
+﻿@page
+@model RazorPagesGeneral.Pages.Movies.DeleteMovieModel
+@{
+    ViewData["Title"] = "Удаление фильма";
+}
+
+<div class="container">
+    <form method="post">
+        <h1>Вы уверены, что хотите удалить фильм @Model.movie.Title</h1>
+        <p>@Model.movie.Description</p>
+        <button type="submit" asp-route-id="@Model.movie.Id" asp-page-handler="delete" class="btn btn-primary">Удалить</button>
+    </form>
+</div>

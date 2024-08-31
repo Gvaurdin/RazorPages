@@ -1,0 +1,39 @@
+﻿@page
+@model RazorPagesGeneral.Pages.Movies.CreateMovieModel
+@{
+    ViewData["Title"] = "Добавить фильм";
+}
+
+<h1>Create</h1>
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MovieViewModel.Title" class="control-label"></label>
+                <input asp-for="MovieViewModel.Title" class="form-control" />
+                <span asp-validation-for="MovieViewModel.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieViewModel.URL" class="control-label"></label>
+                <input asp-for="MovieViewModel.URL" type="file" class="form-control" />
+                <span asp-validation-for="MovieViewModel.URL" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieViewModel.Description" class="control-label"></label>
+                <input asp-for="MovieViewModel.Description" class="form-control" />
+                <span asp-validation-for="MovieViewModel.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MovieViewModel.Duration" class="control-label"></label>
+                <input asp-for="MovieViewModel.Duration" class="form-control" />
+                <span asp-validation-for="MovieViewModel.Duration" class="text-danger"></span>
+            </div>
+            <div>
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

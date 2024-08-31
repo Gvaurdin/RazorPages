@@ -1,0 +1,67 @@
+﻿@page
+@model RazorPagesGeneral.Pages.Movies.IndexModel
+@{
+    ViewData["Title"] = "Фильмы в Афише";
+}
+<div class="container" style="padding-top: 35px">
+    @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+    {
+        <p>
+            <a asp-page="/Movies/CreateMovie">Create movie</a>
+        </p>
+    }
+    <form method="post">
+        <p>Мы показываем фильмы с @Model.MinDateMovie по @Model.MaxDateMovie</p>
+        <input type="date" asp-for="SearchDateMovie" asp-format="{0:yyyy-MM-ddTHH:mm}" value="@Model.SelectedDateMovie" min="@Model.MinDateMovie" max="@Model.MaxDateMovie" />
+        <p>
+            Поиск фильма
+            <input type="text" asp-for="SearchTitleMovie" value="" />
+            <input type="submit" />
+        </p>
+    </form>
+
+    <div class="row row-cols-4">
+        @if (Model.ShedulesByMovie is not null)
+        {
+            @foreach (var shedulesByMovie in Model.ShedulesByMovie)
+            {
+                var shedules = Model.ShedulesByMovie[shedulesByMovie.Key];
+
+                <div class="card gap-3" style="width: 18rem;">
+                <img src="@shedulesByMovie.Key.URL" class="card-img-top" alt="@shedulesByMovie.Key.Title" />
+                <div class="card-body">
+                    <h5 class="card-title">@shedulesByMovie.Key.Title</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    @foreach (var shedule in shedules)
+                    {
+                            <li class="list-group-item">
+                                @shedule.StartFilm.Hour.ToString("00") : @shedule.StartFilm.Minute.ToString("00") |
+                                @shedule.EndFilm.Hour.ToString("00") : @shedule.EndFilm.Minute.ToString("00") |
+                                @shedule.Cost₽
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("user"))
+                                {
+                                    <a class="btn btn-primary" asp-page="./Details" asp-route-id="@shedule.Id">Купить</a>
+                                }
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("admin"))
+                                {
+                                    <a class="btn btn-primary" asp-page="./DeleteMovie" asp-route-id="@shedule.Id">Удалить</a>
+                                    <a class="btn btn-primary" asp-page="./EditMovie" asp-route-id="@shedule.Id">Изменить</a>
+                                }
+                            </li>
+                        }
+                </ul>
+                </div>
+
+            }
+        
+        
+        
+        
+        }
+        else
+        {
+            <h1>По вашему запросу ничего небыло найдено</h1>
+        }
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿@page
+@model RazorPagesGeneral.Pages.Schedules.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Shedule</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Shedule.StartFilm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shedule.StartFilm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Shedule.EndFilm)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shedule.EndFilm)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Shedule.Movie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shedule.Movie.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Shedule.HallCinema)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shedule.HallCinema.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Shedule.Cost)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Shedule.Cost)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Shedule.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>

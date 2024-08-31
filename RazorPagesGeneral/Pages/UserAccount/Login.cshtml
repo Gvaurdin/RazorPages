@@ -1,0 +1,35 @@
+﻿@page
+@model             LoginModel
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <p>
+            <h4>Вход в аккаунт</h4>
+        </p>
+
+        @if (TempData["Error"] != null)
+        {
+            <div>
+                <span><b>Извините</b> - @TempData["Error"]</span>
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-8" offset-2>
+                <form method="post">
+                    <div class="form-date">
+                        <label asp-for="@Model.loginViewModel.EmailAddress"></label>
+                        <input asp-for="@Model.loginViewModel.EmailAddress" />
+                    </div>
+                    <div class="form-date">
+                        <label asp-for="@Model.loginViewModel.Password"></label>
+                        <input asp-for="@Model.loginViewModel.Password" />
+                    </div>
+                    <input type="submit" value="Войти" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
